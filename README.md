@@ -11,4 +11,4 @@
  - used for storing user mapping and analytics data
 
 **`Redis`**
- - used for storing distributed counter and caching original url. so that which resolving the shorturl application does not need to hit the database
+ - used for storing distributed counter and caching original url. so that while resolving the shorturl application does not need to hit the database
