@@ -29,35 +29,4 @@ public class RedisConfiguration {
         return new JedisConnectionFactory(standaloneConfig);
     }
 
-        @Bean
-        public RedisTemplate<String, Object> redisTemplate(JedisConnectionFactory redisConnectionFactory) {
-            RedisTemplate<String, Object> template = new RedisTemplate<>();
-            RedisSerializer<String> redisSerializer = new StringRedisSerializer();
-            template.setConnectionFactory(redisConnectionFactory);
-            template.setKeySerializer(redisSerializer);
-            template.setHashKeySerializer(redisSerializer);
-            return template;
-        }
-
-    @Bean
-    public RedisTemplate<String, Long> redisTemplateForCounter(JedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Long> template = new RedisTemplate<>();
-        RedisSerializer<String> redisSerializer = new StringRedisSerializer();
-        template.setConnectionFactory(redisConnectionFactory);
-        template.setKeySerializer(redisSerializer);
-        template.setHashKeySerializer(redisSerializer);
-        template.setHashValueSerializer(new GenericToStringSerializer<Long>(Long.class));
-        return template;
-    }
-
-
-    @Bean("threadPoolTaskExecutor")
-    public TaskExecutor getAsyncExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(20);
-        executor.setMaxPoolSize(1000);
-        executor.setWaitForTasksToCompleteOnShutdown(true);
-        executor.setThreadNamePrefix("Async-");
-        return executor;
-    }
 }

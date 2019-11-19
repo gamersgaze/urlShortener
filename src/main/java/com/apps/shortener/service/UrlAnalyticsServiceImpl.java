@@ -30,6 +30,9 @@ public class UrlAnalyticsServiceImpl  implements UrlAnalyticsService {
         }
     }
 
+    /**
+     * @Async will execute this method in different thread
+     */
     @Override
     @Async
     public void logUrlAnalytics(String key, String userAgentString) {
@@ -47,6 +50,9 @@ public class UrlAnalyticsServiceImpl  implements UrlAnalyticsService {
         }
     }
 
+    /**
+     * UserAgent is used to store the statistics. It's extracted from HttpRequest
+     */
     private void storeStatistics(UrlMapping urlMapping, UserAgent userAgent) {
         setBrowserStats(userAgent, urlMapping);
         setOperatingSystemStats(userAgent, urlMapping);
