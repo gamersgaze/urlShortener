@@ -1,5 +1,5 @@
 
-# urlShortener
+# urlShortener (Hitesh Gopani/neueda)
 This is a Spring Boot project for Url shortener
 
 **Algorithms**
