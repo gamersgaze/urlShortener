@@ -5,6 +5,11 @@ node('master') {
     def workSpaceHome = pwd()
     def instanceObjKey
     def work="total-----------"
+    def birds = new String[3]
+    		birds[0] = "Parrot"
+    		birds.putAt(1, "Cockatiel")
+    		birds[2] = "Pigeon"
+
     stage('Clean') {
         deleteDir()
     }
@@ -24,7 +29,13 @@ node('master') {
         sh """
             cd /home
             ls
-            echo $work
+            
+            for bbb in $birds
+            do
+                echo ${bbb}
+                echo \${bbb}
+            done
+
          """
          sh "cd /home"
          sh "ls"
