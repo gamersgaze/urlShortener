@@ -21,7 +21,7 @@ node('master') {
     stage('Deploy') {
 
         sh """
-            echo "LS = ${env.LS}"
+            echo "${env.LS}"
          """
         println("deployed succesfully......")
     }
