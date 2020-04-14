@@ -29,8 +29,14 @@ node('master') {
         println(config.jira);
         def req="ec2-user";
         sh  """
-           sh cd /home/$req
+           cd /home/$req
+           ls
         """
+        req="";
+        sh  """
+                   cd /home/$req
+                   ls
+          """
     //println(config.jira);
 
 /*
