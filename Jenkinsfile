@@ -7,7 +7,7 @@ node('master') {
     def work="total-----------"
     def birds = new String[3]
     		birds[0] = "Parrot"
-    		birds.putAt(1, "Cockatiel")
+    		birds[1] = "Cockatiel"
     		birds[2] = "Pigeon"
 
     stage('Clean') {
@@ -29,7 +29,7 @@ node('master') {
         sh """
             cd /home
             ls
-            
+
             for bbb in $birds
             do
                 echo ${bbb}
