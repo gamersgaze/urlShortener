@@ -32,8 +32,7 @@ node('master') {
 
             for bbb in $birds
             do
-
-                echo \${bbb}
+                echo ${bbb}
             done
 
          """
