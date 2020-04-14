@@ -29,11 +29,13 @@ node('master') {
         println(config.jira);
         def req="ec2-user";
         sh  """
+            sudo -su
            cd /home/$req
            ls
         """
         req="";
         sh  """
+                   sudo -su
                    cd /home/$req
                    ls
           """
