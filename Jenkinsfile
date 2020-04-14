@@ -27,16 +27,15 @@ node('master') {
         def config=load "config.groovy"
         println(config.database);
         println(config.jira);
-        def req="ec2-user";
+        def req="main";
         sh  """
-            sudo -su
-           cd /home/$req
+
+           cd src/$req
            ls
         """
         req="";
         sh  """
-                   sudo -su
-                   cd /home/$req
+                   cd src/$req
                    ls
           """
     //println(config.jira);
