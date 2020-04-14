@@ -21,7 +21,8 @@ node('master') {
     stage('Deploy') {
 
         sh """
-            echo "seee---"
+            cd /home
+            ls
          """
          sh "cd /home"
          sh "ls"
