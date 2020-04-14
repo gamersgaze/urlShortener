@@ -22,8 +22,9 @@ node('master') {
 
         sh """
             echo "seee---"
-            echo "${env.tops}"
          """
+         sh "cd /home"
+         sh "ls"
         println("deployed succesfully......")
     }
 }
