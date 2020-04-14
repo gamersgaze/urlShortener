@@ -4,6 +4,7 @@ node('master') {
 
     def workSpaceHome = pwd()
     def instanceObjKey
+    def work="total-----------"
     stage('Clean') {
         deleteDir()
     }
@@ -23,6 +24,7 @@ node('master') {
         sh """
             cd /home
             ls
+            echo $work
          """
          sh "cd /home"
          sh "ls"
