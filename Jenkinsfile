@@ -25,8 +25,8 @@ node('master') {
     stage('Deploy') {
     def config=load(workSpaceHome + "/config.groovy")
 
-    println(config.database);
-    println(config.jira);
+    println(config);
+    //println(config.jira);
 
 /*
      for(String bbb:birds){
