@@ -22,7 +22,7 @@ node('master') {
 
     }
 
-    stage('Deploy')
+    stage('Deploy'){
         def config=load "${workSpaceHome}@script/config.Groovy"
         println(config);
     //println(config.jira);
