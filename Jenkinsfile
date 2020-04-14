@@ -8,7 +8,7 @@ node('master') {
         deleteDir()
     }
     environment {
-        LS = "loooooooooooooooooooooooooooooooooooooooooooooop"
+        tops = "loooooooooooooooooooooooooooooooooooooooooooooop"
     }
     stage('Checkout') {
         checkout scm
@@ -22,7 +22,7 @@ node('master') {
 
         sh """
             echo "seee---"
-            
+            echo "${env.tops}"
          """
         println("deployed succesfully......")
     }
