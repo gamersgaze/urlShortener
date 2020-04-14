@@ -13,9 +13,7 @@ node('master') {
     stage('Clean') {
         deleteDir()
     }
-    environment {
-        tops = "loooooooooooooooooooooooooooooooooooooooooooooop"
-    }
+
     stage('Checkout') {
         checkout scm
     }
@@ -25,14 +23,19 @@ node('master') {
     }
 
     stage('Deploy') {
+    def config=load(workSpaceHome + "/config.groovy")
 
+    println(config.database);
+    println(config.jira);
+
+/*
      for(String bbb:birds){
         sh """
           cd /home
           echo $bbb
         """
      }
-
+*/
         println("deployed succesfully......")
     }
 }
