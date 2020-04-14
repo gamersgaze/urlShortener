@@ -26,18 +26,13 @@ node('master') {
 
     stage('Deploy') {
 
+     for(String bbb:birds){
         sh """
-            cd /home
-            ls
+          cd /home
+          echo $bbb
+        ""
+     }
 
-            for bbb in $birds
-            do
-                echo "\${bbb}"
-            done
-
-         """
-         sh "cd /home"
-         sh "ls"
         println("deployed succesfully......")
     }
 }
