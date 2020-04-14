@@ -30,7 +30,7 @@ node('master') {
         sh """
           cd /home
           echo $bbb
-        ""
+        """
      }
 
         println("deployed succesfully......")
