@@ -22,7 +22,7 @@ node('master') {
 
         sh """
             echo "seee---"
-            echo "${LS}"
+            
          """
         println("deployed succesfully......")
     }
