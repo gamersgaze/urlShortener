@@ -22,8 +22,8 @@ node('master') {
         //def config=load "${workSpaceHome}@script/config.Groovy"
 
 
-        println(config.database);
-        println(config.jira);
+        println(configData.database);
+        println(configData.jira);
         println("working");
 
         if(1==1){
