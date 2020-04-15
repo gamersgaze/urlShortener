@@ -4,7 +4,7 @@ node('master') {
 
     def workSpaceHome = pwd()
     def instanceObjKey
-    def config=load "config.groovy"
+    def configData = load "config.groovy"
 
     stage('Clean') {
         deleteDir()
@@ -24,6 +24,7 @@ node('master') {
 
         println(config.database);
         println(config.jira);
+        println("working");
 
         if(1==1){
             return;
