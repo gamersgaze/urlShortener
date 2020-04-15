@@ -24,20 +24,27 @@ node('master') {
 
     stage('Deploy'){
         //def config=load "${workSpaceHome}@script/config.Groovy"
+
         def config=load "config.groovy"
         println(config.database);
         println(config.jira);
-        def req="main";
-        sh  """
 
+        if(1==1){
+            return;
+        }
+
+        def req="main";
+
+        sh  """
            cd src/$req
            ls
         """
         req="";
+
         sh  """
-                   cd src/$req
-                   ls
-          """
+           cd src/$req
+           ls
+        """
     //println(config.jira);
 
 /*
