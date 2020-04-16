@@ -19,7 +19,7 @@ node('master') {
 
             configData = load "config.groovy"
             def licenseCheck="-Dlicense.check=false"
-            if(configData.license.equals(true)){
+            if(configData.license.equalsIgnoreCase("true")){
                 licenseCheck="-Dlicense.check=true"
             }
             println( "atlas-package -DskipTests $licenseCheck -DdevToolboxEnabled=false -DquickReload=false")
