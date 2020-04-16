@@ -1,0 +1,37 @@
+{
+	"qa.j7.mysql": {
+		"baseUrl": "http://qtm4jmysql.qmetry.com:8181",
+		"username": "admin",
+		"password": "sameer123#"
+	},
+	"dc.j7.mysql": {
+		"baseUrl": "http://qtm4jdatacenter.qmetry.com",
+		"username": "admin",
+		"password": "ispl123#"
+	},
+	"qa.j8.postgres": {
+		"baseUrl": "http://qtm4jpostgres.qmetry.com:8080",
+		"username": "admin",
+		"password": "sameer123#"
+	},
+	"qa.j8.mssql": {
+		"baseUrl": "http://qtm4jmssqlnew.qmetry.com:8080",
+		"username": "admin",
+		"password": "sameer123#"
+	},
+	"qa.j8.oracle": {
+		"baseUrl": "http://qtm4joracle.qmetry.com:8181",
+		"username": "admin",
+		"password": "ispl123#"
+	},
+	"qa.j8.h2": {
+		"baseUrl": "http://qtm4jh2.qmetry.com:8080",
+		"username": "admin",
+		"password": "ispl123#"
+	},
+	"dev.j8.postgres": {
+		"baseUrl": "http://qtm4j-dev-postgres.qmetry.com:8080",
+		"username": "jenkins",
+		"password": "JenkIns@007#"
+	}
+}
