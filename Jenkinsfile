@@ -1,10 +1,11 @@
 import groovy.json.JsonSlurperClassic
 
 node('master') {
-
     def workSpaceHome = pwd()
-    def instanceObjKey
-    def configData = load "config.groovy"
+
+    def configData
+    def jira7Jar="QmetryTestManager-4.0.0_jira7.jar"
+    def jira8Jar="QmetryTestManager-4.0.0.jar"
 
     stage('Clean') {
         deleteDir()
@@ -15,43 +16,56 @@ node('master') {
     }
 
     stage('Run') {
-
+    withMaven(jdk: 'JDK', maven: 'maven3', mavenLocalRepo: '', mavenOpts: '', mavenSettingsFilePath: '/opt/qtmserverdependency/settings.xml') {
+            configData = load "config.groovy"
+            def licenseCheck="-Dlicense.check=false"
+            if(configData.license.equals(Boolean.TRUE){
+                licenseCheck="-Dlicense.check=true"
+            }
+            println( "atlas-package -DskipTests $licenseCheck -DdevToolboxEnabled=false -DquickReload=false")
+            println( "atlas-package -DskipTests $licenseCheck -Pjira7 -DdevToolboxEnabled=false -DquickReload=false")
+       }
     }
 
-    stage('Deploy'){
-        //def config=load "${workSpaceHome}@script/config.Groovy"
+    stage('Deploy') {
 
-
-        println(configData.database);
-        println(configData.jira);
-        println("working");
-
-        if(1==1){
+        if(configData.autoDeploy.equalsIgnoreCase("NA")){
             return;
         }
-
-        def req="main";
-
-        sh  """
-           cd src/$req
-           ls
-        """
-        req="";
-
-        sh  """
-           cd src/$req
-           ls
-        """
-    //println(config.jira);
-
-/*
-     for(String bbb:birds){
-        sh """
-          cd /home
-          echo $bbb
-        """
-     }
+  /*
+         sh """
+            cd target/
+            cp $jira7Jar ../deployment/$jira7Jar
+            cp $jira8Jar ../deployment/$jira8Jar
+           """
 */
-        println("deployed succesfully......")
+        def instanceFile = new File(workSpaceHome+'/deployment/instances.json')
+        def instanceJSON = new JsonSlurperClassic().parse(instanceFile)
+
+        def instances=str.split(",")
+        for(String instanceObjKey:instances){
+            def data=instanceObjKey.split("\\.")
+            if(data.length==3){
+                def baseUrl = instanceJSON."$instanceObjKey".baseUrl
+                def username = instanceJSON."$instanceObjKey".username
+                def password = instanceJSON."$instanceObjKey".password
+                def jira=data[1].trim()
+                def appFile
+
+                if(jira.equals("j7"){
+                   appFile = jira7Jar
+                }else{
+                   appFile = jira8Jar
+                }
+                println("java -jar installer.jar $username,$password,$baseUrl,$appFile")
+                /*
+                sh """
+                    cd deployment/
+                    java -jar installer.jar $username,$password,$baseUrl,$appFile
+                   """
+                   */
+            }
+        }
+         println("deployed successfully")
     }
 }
