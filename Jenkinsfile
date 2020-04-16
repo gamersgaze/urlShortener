@@ -42,7 +42,7 @@ node('master') {
         def instanceFile = new File(workSpaceHome+'/deployment/instances.json')
         def instanceJSON = new JsonSlurperClassic().parse(instanceFile)
 
-        def instances=str.split(",")
+        def instances=configData.autoDeploy.split(",")
         for(String instanceObjKey:instances){
             def data=instanceObjKey.split("\\.")
             if(data.length==3){
