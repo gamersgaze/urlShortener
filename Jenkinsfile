@@ -52,7 +52,7 @@ node('master') {
                 def jira=data[1].trim()
                 def appFile
 
-                if(jira.equals("j7"){
+                if(jira.equals("j7")){
                    appFile = jira7Jar
                 }else{
                    appFile = jira8Jar
