@@ -16,7 +16,7 @@ node('master') {
     }
 
     stage('Run') {
-    withMaven(jdk: 'JDK', maven: 'maven3', mavenLocalRepo: '', mavenOpts: '', mavenSettingsFilePath: '/opt/qtmserverdependency/settings.xml') {
+    
             configData = load "config.groovy"
             def licenseCheck="-Dlicense.check=false"
             if(configData.license.equals(Boolean.TRUE)){
@@ -24,7 +24,7 @@ node('master') {
             }
             println( "atlas-package -DskipTests $licenseCheck -DdevToolboxEnabled=false -DquickReload=false")
             println( "atlas-package -DskipTests $licenseCheck -Pjira7 -DdevToolboxEnabled=false -DquickReload=false")
-       }
+
     }
 
     stage('Deploy') {
