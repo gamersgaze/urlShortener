@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface UrlAnalyticsService {
 
-    UrlMapping fetchStatistics_prashant(String key);
+    UrlMapping fetchStatistics_todo(String key);
 
 
     void logUrlAnalytics(String key, String userAgentString);
